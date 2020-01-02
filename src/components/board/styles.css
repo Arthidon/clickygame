@@ -3,6 +3,14 @@ body {
 }
 
 .board {
-    margin: 0px;
+    align-self: center;
+    align-content: center;
+    margin-left: 250px;
+    margin-right: 250px;
     padding: 0px;
+
+ 
+}
+.container {
+    width: 90%;
 }
