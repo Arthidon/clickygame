@@ -3,11 +3,16 @@ body {
 }
 
 .board {
-    align-self: center;
+    /* align-self: center;
     align-content: center;
     margin-left: 250px;
     margin-right: 250px;
-    padding: 0px;
+    padding: 0px; */
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 50%;
+    margin: 0 auto;
 
  
 }

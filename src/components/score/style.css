@@ -1,0 +1,7 @@
+.nav-item {
+    position: fixed;
+    left: 75%;
+    padding-right: 5px;
+    font-size: 25px;
+    color: black;
+}
