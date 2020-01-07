@@ -4,11 +4,6 @@ import initializeDeck from '../../deck'
 import Navbar from '../navbar';
 
 
-
-
-
-
-
 export default function Game() {
   const [cards, setCards] = useState([])
   const [flipped, setFlipped] = useState([])
@@ -25,11 +20,11 @@ export default function Game() {
     setCards(initializeDeck())
   }, [])
   //score useEffect
-  useEffect(() => {
-  }, [])
+
   useEffect(() => {
     preloadImages()
   }, [cards])
+
   useEffect(() => {
     const resizeListener = window.addEventListener('resize', resizeBoard)
     return () => window.removeEventListener('resize', resizeListener)
@@ -40,7 +35,7 @@ export default function Game() {
     if (flipped.length === 0) {
       setFlipped([id]);
       setDisabled(false) ;
-     
+     return
     }else {
       if (sameCardClicked(id)) return
       setFlipped([flipped[0], id])
@@ -49,7 +44,7 @@ export default function Game() {
       if (isMatch(id)) {
         addScore()
         setSolved([...solved, flipped[0], id])
-       //match
+      resetCards()
        
         
       } else {
@@ -70,6 +65,8 @@ export default function Game() {
     new Image().src = src
    })
  } 
+
+ //Scoring
  const lostAttempt = () => {
    setAttempts(attempts - 1)
    console.log(attempts);
@@ -86,6 +83,7 @@ console.log(score, highScore);
     setDisabled(false)
   }
 const sameCardClicked = (id) => flipped.includes(id)
+
 const isMatch = (id) => {
   const clickedCard = cards.find((card) => card.id === id)
   const flippedCard = cards.find((card) => flipped[0] === card.id)
