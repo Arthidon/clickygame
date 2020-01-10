@@ -44,7 +44,7 @@ export default function Game() {
       if (isMatch(id)) {
         addScore()
         setSolved([...solved, flipped[0], id])
-      resetCards()
+        resetCards()
        
         
       } else {
@@ -76,6 +76,12 @@ export default function Game() {
 const addScore = () => {
   setScore(score + 1) ;
 console.log(score, highScore);
+}
+
+const changeHighScore = () => {
+  setHighScore(highScore = score)
+  console.log(highScore);
+console.log(score, attempts)
 }
 
   const resetCards = () => {
