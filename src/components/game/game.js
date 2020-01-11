@@ -21,9 +21,9 @@ export default function Game() {
   }, [])
   //score useEffect
 
-  useEffect(() => {
-    preloadImages()
-  }, [cards])
+  // useEffect(() => {
+  //   preloadImages()
+  // }, [cards])
 
   useEffect(() => {
     const resizeListener = window.addEventListener('resize', resizeBoard)
@@ -45,42 +45,50 @@ export default function Game() {
         addScore()
         setSolved([...solved, flipped[0], id])
         resetCards()
+        boardClear() 
+
        
-        
+        //check board clear
       } else {
         lostAttempt()
         setTimeout(resetCards, 2000)
-        //if inccorect 
-        
-        
+        boardClear() 
       }
     }
   
   }
- const preloadImages = () => {
-  //  console.log(cards.length);
-   cards.map((card) => {
-    const src = `/img/${card.type}.png`
-    // console.log(src);
-    new Image().src = src
-   })
- } 
+//  const preloadImages = () => {
+//   //  console.log(cards.length);
+//    cards.map((card) => {
+//     const src = `/img/${card.type}.png`
+//     // console.log(src);
+//     new Image().src = src
+//    })
+//  } 
+
+ //check board clear
+const boardClear = () => {
+  if (solved.length === 16) {
+    changeHighScore()
+    setCards(initializeDeck())
+  }
+}
 
  //Scoring
  const lostAttempt = () => {
    setAttempts(attempts - 1)
-   console.log(attempts);
+   console.log("Attempts: " + attempts);
  console.log(score, highScore)
 }
 
 const addScore = () => {
   setScore(score + 1) ;
-console.log(score, highScore);
+console.log("Score: " + score, highScore);
 }
 
 const changeHighScore = () => {
   setHighScore(highScore = score)
-  console.log(highScore);
+  console.log("High Score: " + highScore);
 console.log(score, attempts)
 }
 

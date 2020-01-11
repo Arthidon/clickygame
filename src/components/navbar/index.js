@@ -17,7 +17,7 @@ export default function Navbar ({
 			</span>
 			<div className='nav-item'>
 				Score: {score} &nbsp;<span className='seperator'>|</span>&nbsp;
-				Top Score: {highScore}<span className='seperator'>|</span>&nbsp;
+				High Score: {highScore}<span className='seperator'>|</span>&nbsp;
                 Attemps: {attempts}
 			</div>
 		</nav>
