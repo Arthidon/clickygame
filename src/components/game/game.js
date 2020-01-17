@@ -12,8 +12,8 @@ export default function Game() {
   const [disabled, setDisabled] = useState(false)
   let [score, setScore] = useState(0)
   let [highScore, setHighScore] = useState(0)
-  let [attempts, setAttempts] = useState(5)
-
+  let [attempts, setAttempts] = useState(7)
+  let scoreCounter = [];
   
   useEffect(() => {
     resizeBoard()
@@ -42,17 +42,23 @@ export default function Game() {
       
       
       if (isMatch(id)) {
+        scoreCounter.push(id)
+        console.log(scoreCounter);
         addScore()
         setSolved([...solved, flipped[0], id])
         resetCards()
-        boardClear() 
+        boardClear()
+        
+        
+        
 
        
         //check board clear
       } else {
         lostAttempt()
         setTimeout(resetCards, 2000)
-        boardClear() 
+        boardClear()
+        
       }
     }
   
@@ -68,12 +74,30 @@ export default function Game() {
 
  //check board clear
 const boardClear = () => {
-  if (solved.length === 16) {
+  console.log(solved);
+  if (solved.length === 14) {
     changeHighScore()
+    setSolved([])
     setCards(initializeDeck())
+    setAttempts(7)
+  }
+  if (attempts.length <= 0) {
+    setSolved([])
+    setCards(initializeDeck())
+    setAttempts(7)
+    setScore(0)
   }
 }
 
+const lose = () => {
+
+}
+
+const changeHighScore = () => {
+  if(score > highScore){
+  setHighScore(highScore = score)
+ }
+}
  //Scoring
  const lostAttempt = () => {
    setAttempts(attempts - 1)
@@ -84,12 +108,6 @@ const boardClear = () => {
 const addScore = () => {
   setScore(score + 1) ;
 console.log("Score: " + score, highScore);
-}
-
-const changeHighScore = () => {
-  setHighScore(highScore = score)
-  console.log("High Score: " + highScore);
-console.log(score, attempts)
 }
 
   const resetCards = () => {
