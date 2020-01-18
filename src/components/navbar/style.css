@@ -1,3 +1,13 @@
+body {
+    background-image: url("");
+    background-position: center;
+    background-size: 100%;
+   }
+
+h2 {
+    margin-left: 10%;
+    font-size: 35px;
+}
 .navbar {
     margin: 0;
     padding: 0;
@@ -24,45 +34,4 @@
 .green {
     font-weight: 500;
     animation: correct 0.5s;
-}
-
-@keyframes correct {
-    0% {
-        color: white;
-    }
-
-    25% {
-        color: #3bb273;
-    }
-
-    75% {
-        color: #3bb273;
-    }
-
-    100% {
-        color: white;
-    }
-}
-
-.red {
-    font-weight: 500;
-    animation: incorrect 0.5s;
-}
-
-@keyframes incorrect {
-    0% {
-        color: white;
-    }
-
-    25% {
-        color: #e15554;
-    }
-
-    75% {
-        color: #e15554;
-    }
-
-    100% {
-        color: white;
-    }
 }
