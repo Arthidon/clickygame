@@ -74,14 +74,15 @@ export default function Game() {
 
  //check board clear
 const boardClear = () => {
-  console.log(solved);
+  console.log("solved" + solved);
   if (solved.length === 14) {
     changeHighScore()
     setSolved([])
     setCards(initializeDeck())
     setAttempts(7)
   }
-  if (attempts.length <= 0) {
+  if (attempts <= 0) {
+    console.log("Attempts: " + attempts)
     setSolved([])
     setCards(initializeDeck())
     setAttempts(7)
